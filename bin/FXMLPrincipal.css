@@ -1,0 +1,31 @@
+.root {
+  -fx-background-color: #545454;
+  -fx-text-fill: #efefef;
+  -fx-font-family: "Poppins", sans-serif;
+}
+
+Label,
+RadioButton {
+  -fx-text-fill: #efefef;
+  -fx-font-family: "Poppins", sans-serif;
+}
+
+Button,
+TextField {
+  -fx-font-family: "Poppins", sans-serif;
+}
+
+#tab {
+  -fx-background-color: #414040;
+}
+
+#tab:hover,
+#tab:focused {
+  -fx-background-color: #545454;
+}
+
+#menubar {
+  -fx-background-color: #9b9b9b;
+  -fx-font-family: "Poppins", sans-serif;
+  -fx-text-fill: #efefef;
+}
