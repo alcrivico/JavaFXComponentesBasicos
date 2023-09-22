@@ -10,12 +10,15 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
 
 public class FXMLPrincipalController implements Initializable {
@@ -57,6 +60,24 @@ public class FXMLPrincipalController implements Initializable {
 
     @FXML
     private ToggleGroup toggleColores;
+
+    @FXML
+    private CheckBox cbJamon;
+
+    @FXML
+    private CheckBox cbPepperoni;
+
+    @FXML
+    private CheckBox cbPina;
+
+    @FXML
+    private CheckBox cbSalami;
+
+    @FXML
+    private CheckBox cbOtro;
+
+    @FXML
+    private TextField tfOtro;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -132,6 +153,25 @@ public class FXMLPrincipalController implements Initializable {
         lbSeleccionColor.setText("");
     }
 
+    @FXML
+    private void btnVerOrden(ActionEvent event) {
+        String ordenCreada = "";
+
+        if (cbJamon.isSelected())
+            ordenCreada += "\n - " + cbJamon.getText();
+
+        if (cbPepperoni.isSelected())
+            ordenCreada += "\n - " + cbPepperoni.getText();
+
+        if (cbPina.isSelected())
+            ordenCreada += "\n - " + cbPina.getText();
+
+        if (cbSalami.isSelected())
+            ordenCreada += "\n - " + cbSalami.getText();
+
+        mostrarOrdenCreada(ordenCreada);
+    }
+
     private boolean verificarExistenciaCarrera(String carrera) {
         for (String carreraExistente : listaCarreras) {
             if (carrera.toLowerCase().equals(carreraExistente.toLowerCase())) {
@@ -174,5 +214,25 @@ public class FXMLPrincipalController implements Initializable {
             }
 
         });
+    }
+
+    private void mostrarOrdenCreada(String orden) {
+        if (!orden.isEmpty()) {
+            Alert dialogoOrden = new Alert(Alert.AlertType.INFORMATION);
+
+            dialogoOrden.setTitle("Orden Seleccionada");
+
+            dialogoOrden.setHeaderText("Los ingredientes para la pizza son: ");
+            dialogoOrden.setContentText(orden);
+            dialogoOrden.showAndWait();
+        } else {
+            Alert dialogoOrden = new Alert(Alert.AlertType.WARNING);
+
+            dialogoOrden.setTitle("Orden Seleccionada");
+
+            dialogoOrden.setHeaderText(null);
+            dialogoOrden.setContentText("Debes seleccionar al menos un ingrediente para crear tu orden");
+            dialogoOrden.showAndWait();
+        }
     }
 }

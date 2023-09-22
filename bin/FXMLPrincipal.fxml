@@ -33,6 +33,7 @@
 -->
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -174,6 +175,22 @@
                                     </Label>
                                  </children>
                               </Pane>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab fx:id="tab" text="Crea tu Orden">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="195.0" layoutY="51.0" text="Selecciona los Ingredientes de tu Pizza" />
+                              <CheckBox fx:id="cbJamon" layoutX="195.0" layoutY="96.0" mnemonicParsing="false" text="Jamon" />
+                              <CheckBox fx:id="cbPepperoni" layoutX="195.0" layoutY="126.0" mnemonicParsing="false" text="Pepperoni" />
+                              <CheckBox fx:id="cbPina" layoutX="195.0" layoutY="159.0" mnemonicParsing="false" text="Piña" />
+                              <CheckBox fx:id="cbSalami" layoutX="195.0" layoutY="192.0" mnemonicParsing="false" text="Salami" />
+                              <Button layoutX="220.0" layoutY="268.0" mnemonicParsing="false" onAction="#btnVerOrden" text="Ver Resumen de tu Orden" />
+                              <CheckBox fx:id="cbOtro" layoutX="197.0" layoutY="228.0" mnemonicParsing="false" text="Otro" />
+                              <TextField fx:id="tfOtro" layoutX="253.0" layoutY="224.0" />
                            </children>
                         </AnchorPane>
                     </content>
