@@ -1,20 +1,15 @@
 import java.text.DecimalFormat;
 
-import javafx.beans.InvalidationListener;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
-import java.beans.EventHandler;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import javax.swing.Action;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
@@ -24,7 +19,6 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
 
 public class FXMLPrincipalController implements Initializable {
