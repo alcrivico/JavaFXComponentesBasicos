@@ -37,7 +37,7 @@ El apartado visual `JAVA PROJECTS` permite administrar las dependencias. Para m�
 
 Para ejecutarlo hay dar click derecho en el archivo "JavaFXComponentesBasicos.java" que se encuentra en la carpeta "src" en el menu de directorios de la izquierda, luego buscar la opción:
 
-# Run Java
+### Run Java
 
 Esta se encuentra hasta abajo del menú contextual. Es importante no elegir la opción 'Run Code' ya que esa opción solo codifica archivos Java y no tiene soporte para JavaFX.
 
