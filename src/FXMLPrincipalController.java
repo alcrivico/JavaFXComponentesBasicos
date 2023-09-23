@@ -1,14 +1,20 @@
 import java.text.DecimalFormat;
 
+import javafx.beans.InvalidationListener;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+
+import java.beans.EventHandler;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javax.swing.Action;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
@@ -82,6 +88,7 @@ public class FXMLPrincipalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         inicializarValoresCombo();
+
         cbCarreras.setItems(listaCarreras);
         cbCarreras.valueProperty().addListener(new ChangeListener<String>() {
 
@@ -154,6 +161,18 @@ public class FXMLPrincipalController implements Initializable {
     }
 
     @FXML
+    private void seleccionarOtroIngrediente(ActionEvent e) {
+        if (cbOtro.isSelected()) {
+            tfOtro.setVisible(true);
+            tfOtro.setEditable(true);
+        } else {
+            tfOtro.setText("");
+            tfOtro.setVisible(false);
+            tfOtro.setEditable(false);
+        }
+    }
+
+    @FXML
     private void btnVerOrden(ActionEvent event) {
         String ordenCreada = "";
 
@@ -168,6 +187,9 @@ public class FXMLPrincipalController implements Initializable {
 
         if (cbSalami.isSelected())
             ordenCreada += "\n - " + cbSalami.getText();
+
+        if (cbOtro.isSelected())
+            ordenCreada += "\n - " + tfOtro.getText();
 
         mostrarOrdenCreada(ordenCreada);
     }
@@ -217,7 +239,15 @@ public class FXMLPrincipalController implements Initializable {
     }
 
     private void mostrarOrdenCreada(String orden) {
-        if (!orden.isEmpty()) {
+        if (cbOtro.isSelected() && tfOtro.getText().isEmpty()) {
+            Alert dialogoOrden = new Alert(Alert.AlertType.ERROR);
+
+            dialogoOrden.setTitle("Orden Seleccionada");
+
+            dialogoOrden.setHeaderText(null);
+            dialogoOrden.setContentText("Debes escribir otro ingrediente o deseleccionarlo para crear tu orden");
+            dialogoOrden.showAndWait();
+        } else if (!orden.isEmpty()) {
             Alert dialogoOrden = new Alert(Alert.AlertType.INFORMATION);
 
             dialogoOrden.setTitle("Orden Seleccionada");

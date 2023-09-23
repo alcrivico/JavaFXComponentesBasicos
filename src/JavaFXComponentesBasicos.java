@@ -2,6 +2,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import javafx.scene.text.Font;
@@ -16,6 +17,7 @@ public class JavaFXComponentesBasicos extends Application {
     @Override
     public void start(Stage principalStage) throws Exception {
         Font poppins = Font.loadFont(getClass().getResourceAsStream("./resources/fonts/Poppins-Regular.ttf"), 12);
+        Image windowIcon = new Image("./resources/icons/scene-builder-icon.png");
 
         Parent root = null;
 
@@ -28,6 +30,9 @@ public class JavaFXComponentesBasicos extends Application {
         scene.getStylesheets().add(css);
 
         principalStage.setScene(scene);
+
+        principalStage.setTitle("Componentes Básicos en JavaFX");
+        principalStage.getIcons().add(windowIcon);
 
         principalStage.show();
     }
