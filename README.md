@@ -33,6 +33,14 @@ Ej Unix. "vmArgs": "--module-path /path/to/javafx-sdk-17.0.8/lib --add-modules j
 
 El apartado visual `JAVA PROJECTS` permite administrar las dependencias. Para más detalle [aquí](https://github.com/microsoft/vscode-java-dependency#manage-dependencies). Otra forma de agregar dependencias es mediante la carpeta lib, allí puedes agregar la biblioteca de javaFX y otras dependencias.
 
+## Ejecución
+
+Para ejecutarlo hay dar click derecho en el archivo "JavaFXComponentesBasicos.java" que se encuentra en la carpeta "src" en el menu de directorios de la izquierda, luego buscar la opción:
+
+# Run Java
+
+Esta se encuentra hasta abajo del menú contextual. Es importante no elegir la opción 'Run Code' ya que esa opción solo codifica archivos Java y no tiene soporte para JavaFX.
+
 ## Descrición
 
 Actividad formativa de JavaFX para la Experiencia Educativa Principios de Construcción de Software de la carrera de Ingeniería de Software de la Universidad Veracruzana.
