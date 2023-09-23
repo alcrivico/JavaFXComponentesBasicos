@@ -17,6 +17,8 @@ Mientras que, la compilación de los archivos fuente generará la carpeta `bin` 
 
 (NOTA: Si copias la ruta desde Windows procura cambiar todas las "\" ❌ por "/" ✅ unicamente deja las diagonales que ya estaban, procura que no estén los simbolos de señalamiento "<" y ">").
 
+Ej. "vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-17.0.8/lib\" --add-modules javafx.controls,javafx.fxml"
+
 > Para cambiar las librerías del SDK de javaFX a otra version en la parte inferior izquierda del editor Visual Studio Code despliega la pestaña JAVA PROJECTS > JavaFXComponentesBasicos > Referenced Libraries > + . Deberás eliminar las librerias de la version que quieras cambiar ybuscar la ruta del SDK de JavaFX de tu preferencia y seleccionar todos los .jar localizados en la carpeta lib y dar clic al botón Select Jar Libraries.
 
 > Ejemplo de ruta donde se puede localizar:
