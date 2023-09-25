@@ -19,6 +19,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 public class FXMLPrincipalController implements Initializable {
@@ -78,6 +79,9 @@ public class FXMLPrincipalController implements Initializable {
 
     @FXML
     private TextField tfOtro;
+
+    @FXML
+    private ImageView ivFoto;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -186,6 +190,11 @@ public class FXMLPrincipalController implements Initializable {
             ordenCreada += "\n - " + tfOtro.getText();
 
         mostrarOrdenCreada(ordenCreada);
+    }
+
+    @FXML
+    void btnSeleccionarFoto(ActionEvent event) {
+
     }
 
     private boolean verificarExistenciaCarrera(String carrera) {

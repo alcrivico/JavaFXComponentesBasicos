@@ -44,6 +44,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -134,6 +135,22 @@
                               <Button layoutX="232.0" layoutY="251.0" mnemonicParsing="false" onAction="#btnVerOrden" text="Ver Resumen de tu Orden" />
                               <CheckBox fx:id="cbOtro" layoutX="209.0" layoutY="211.0" mnemonicParsing="false" onAction="#seleccionarOtroIngrediente" text="Otro" />
                               <TextField fx:id="tfOtro" editable="false" layoutX="284.0" layoutY="207.0" visible="false" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Perfíl de Usuario">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Pane layoutX="260.0" layoutY="30.0" prefHeight="120.0" prefWidth="120.0" style="-fx-background-color: #eaeaea;" />
+                              <ImageView fx:id="ivFoto" fitHeight="120.0" fitWidth="120.0" layoutX="260.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
+                              <Button layoutX="285.0" layoutY="137.0" mnemonicParsing="false" onAction="#btnSeleccionarFoto" text="Fotografía" />
+                              <TextField layoutX="150.0" layoutY="205.0" promptText="Numero de Personal" />
+                              <TextField layoutX="334.0" layoutY="205.0" promptText="Nombre" />
+                              <TextField layoutX="150.0" layoutY="245.0" promptText="Apellido Paterno" />
+                              <TextField layoutX="334.0" layoutY="245.0" promptText="Apellido Materno" />
+                              <Button layoutX="275.0" layoutY="296.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="90.0" text="Ver" />
                            </children>
                         </AnchorPane>
                     </content>
