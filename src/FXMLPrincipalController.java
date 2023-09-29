@@ -4,12 +4,19 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javax.imageio.ImageIO;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
@@ -20,9 +27,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class FXMLPrincipalController implements Initializable {
+
+    private File imagenSeleccionada;
 
     @FXML
     private Label lbResultado;
@@ -82,6 +94,9 @@ public class FXMLPrincipalController implements Initializable {
 
     @FXML
     private ImageView ivFoto;
+
+    @FXML
+    private Pane paneBackgroundFoto;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -193,8 +208,27 @@ public class FXMLPrincipalController implements Initializable {
     }
 
     @FXML
-    void btnSeleccionarFoto(ActionEvent event) {
+    void btnSeleccionarFoto(ActionEvent event) throws Exception {
+        FileChooser dialogoSeleccion = new FileChooser();
+        dialogoSeleccion.setTitle("Selecciona la foto del Usuario");
+        String etiquetatipoDato = "Archivos PNG  (*.png)";
+        String extensionArchivo = "*.PNG";
+        Stage scenarioActual = (Stage) ivFoto.getScene().getWindow();
+        FileChooser.ExtensionFilter filtroSeleccion = new FileChooser.ExtensionFilter(etiquetatipoDato,
+                extensionArchivo);
+        dialogoSeleccion.getExtensionFilters().add(filtroSeleccion);
+        imagenSeleccionada = dialogoSeleccion.showOpenDialog(scenarioActual);
 
+        if (imagenSeleccionada != null) {
+            try {
+                BufferedImage buffered = ImageIO.read(imagenSeleccionada);
+                WritableImage image = SwingFXUtils.toFXImage(buffered, null);
+                ivFoto.setImage(image);
+                paneBackgroundFoto.setVisible(false);
+            } catch (IOException e) {
+                // TODO: handle exception
+            }
+        }
     }
 
     private boolean verificarExistenciaCarrera(String carrera) {

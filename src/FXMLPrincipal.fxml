@@ -139,11 +139,11 @@
                         </AnchorPane>
                     </content>
                   </Tab>
-                  <Tab text="Perfíl de Usuario">
+                  <Tab fx:id="tab" text="Perfíl de Usuario">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Pane layoutX="260.0" layoutY="30.0" prefHeight="120.0" prefWidth="120.0" style="-fx-background-color: #eaeaea;" />
+                              <Pane fx:id="paneBackgroundFoto" layoutX="260.0" layoutY="30.0" prefHeight="120.0" prefWidth="120.0" style="-fx-background-color: #eaeaea;" />
                               <ImageView fx:id="ivFoto" fitHeight="120.0" fitWidth="120.0" layoutX="260.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
                               <Button layoutX="285.0" layoutY="137.0" mnemonicParsing="false" onAction="#btnSeleccionarFoto" text="Fotografía" />
                               <TextField layoutX="150.0" layoutY="205.0" promptText="Numero de Personal" />
