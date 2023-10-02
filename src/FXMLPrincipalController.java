@@ -9,11 +9,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.LinkedHashMap;
 import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
@@ -23,6 +23,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
@@ -97,6 +98,21 @@ public class FXMLPrincipalController implements Initializable {
 
     @FXML
     private Pane paneBackgroundFoto;
+
+    @FXML
+    private TextField tfApellidoMaterno;
+
+    @FXML
+    private TextField tfApellidoPaterno;
+
+    @FXML
+    private TextField tfNoPersonal;
+
+    @FXML
+    private TextField tfNombrePerfil;
+
+    @FXML
+    private TabPane tabContenedor;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -226,8 +242,39 @@ public class FXMLPrincipalController implements Initializable {
                 ivFoto.setImage(image);
                 paneBackgroundFoto.setVisible(false);
             } catch (IOException e) {
-                // TODO: handle exception
+                e.printStackTrace();
             }
+        }
+    }
+
+    @FXML
+    void btnVerPerfil(ActionEvent event) {
+        LinkedHashMap<String, String> datos = new LinkedHashMap<>();
+
+        if (!tfNombrePerfil.getText().isEmpty()) {
+            datos.put("nombre", tfNombrePerfil.getText());
+        }
+
+        if (!tfNoPersonal.getText().isEmpty()) {
+            datos.put("noPersonal", tfNoPersonal.getText());
+        }
+
+        if (!tfApellidoPaterno.getText().isEmpty()) {
+            datos.put("apellidoPaterno", tfApellidoPaterno.getText());
+        }
+
+        if (!tfApellidoMaterno.getText().isEmpty()) {
+            datos.put("apellidoMaterno", tfApellidoMaterno.getText());
+        }
+
+        if (imagenSeleccionada != null) {
+            datos.put("rutaImagen", imagenSeleccionada.getPath());
+        }
+
+        if (datos.size() == 5) {
+            mostrarFormacionInfoPersonal(datos);
+        } else {
+            mostrarErrorInfoPersonal();
         }
     }
 
@@ -238,6 +285,35 @@ public class FXMLPrincipalController implements Initializable {
             }
         }
         return false;
+    }
+
+    @FXML
+    void menuIrFinal(ActionEvent event) {
+        tabContenedor.getSelectionModel().selectLast();
+    }
+
+    @FXML
+    void menuIrInicio(ActionEvent event) {
+        tabContenedor.getSelectionModel().select(0);
+    }
+
+    @FXML
+    void menuSalirPrograma(ActionEvent event) {
+        Stage stagePrincipal = (Stage) tabContenedor.getScene().getWindow();
+        stagePrincipal.close();
+    }
+
+    @FXML
+    void menuVerAcercaDe(ActionEvent event) {
+        String info = "";
+
+        Alert dialogoInfo = new Alert(Alert.AlertType.INFORMATION);
+
+        dialogoInfo.setTitle("Acerca De");
+
+        dialogoInfo.setHeaderText("Acerca De");
+        dialogoInfo.setContentText(info);
+        dialogoInfo.showAndWait();
     }
 
     private void inicializarValoresCombo() {
@@ -301,5 +377,30 @@ public class FXMLPrincipalController implements Initializable {
             dialogoOrden.setContentText("Debes seleccionar al menos un ingrediente para crear tu orden");
             dialogoOrden.showAndWait();
         }
+    }
+
+    private void mostrarFormacionInfoPersonal(LinkedHashMap<String, String> datos) {
+        String info = String.format(
+                "No. Personal: %s\nNombre: %s\nApellido Paterno: %s\nApellido Materno: %s\nRuta de Imagen: %s",
+                datos.get("noPersonal"), datos.get("nombre"), datos.get("apellidoPaterno"),
+                datos.get("apellidoMaterno"), datos.get("rutaImagen"));
+
+        Alert dialogoInfo = new Alert(Alert.AlertType.INFORMATION);
+
+        dialogoInfo.setTitle("Informacion Personal");
+
+        dialogoInfo.setHeaderText(null);
+        dialogoInfo.setContentText(info);
+        dialogoInfo.showAndWait();
+    }
+
+    private void mostrarErrorInfoPersonal() {
+        Alert dialogoInfo = new Alert(Alert.AlertType.ERROR);
+
+        dialogoInfo.setTitle("No ingresaste todos los datos");
+
+        dialogoInfo.setHeaderText(null);
+        dialogoInfo.setContentText("No ingresaste todos los datos");
+        dialogoInfo.showAndWait();
     }
 }

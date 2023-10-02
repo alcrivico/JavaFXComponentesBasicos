@@ -58,19 +58,19 @@
             <menus>
               <Menu mnemonicParsing="false" text="Opciones">
                 <items>
-                  <MenuItem mnemonicParsing="false" text="Salir" />
-                  <MenuItem mnemonicParsing="false" text="Acerca de" />
+                  <MenuItem mnemonicParsing="false" onAction="#menuSalirPrograma" text="Salir" />
+                  <MenuItem mnemonicParsing="false" onAction="#menuVerAcercaDe" text="Acerca de" />
                 </items>
               </Menu>
               <Menu mnemonicParsing="false" text="Navegación">
                 <items>
-                  <MenuItem mnemonicParsing="false" text="Ir al Inicio" />
-                  <MenuItem mnemonicParsing="false" text="Ir al Final" />
+                  <MenuItem mnemonicParsing="false" onAction="#menuIrInicio" text="Ir al Inicio" />
+                  <MenuItem mnemonicParsing="false" onAction="#menuIrFinal" text="Ir al Final" />
                 </items>
               </Menu>
             </menus>
           </MenuBar>
-            <TabPane layoutY="26.0" prefHeight="374.0" prefWidth="640.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane fx:id="tabContenedor" layoutY="26.0" prefHeight="374.0" prefWidth="640.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab fx:id="tab" text="Calculo de IVA">
                   <content>
@@ -146,11 +146,11 @@
                               <Pane fx:id="paneBackgroundFoto" layoutX="260.0" layoutY="30.0" prefHeight="120.0" prefWidth="120.0" style="-fx-background-color: #eaeaea;" />
                               <ImageView fx:id="ivFoto" fitHeight="120.0" fitWidth="120.0" layoutX="260.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
                               <Button layoutX="285.0" layoutY="137.0" mnemonicParsing="false" onAction="#btnSeleccionarFoto" text="Fotografía" />
-                              <TextField layoutX="150.0" layoutY="205.0" promptText="Numero de Personal" />
-                              <TextField layoutX="334.0" layoutY="205.0" promptText="Nombre" />
-                              <TextField layoutX="150.0" layoutY="245.0" promptText="Apellido Paterno" />
-                              <TextField layoutX="334.0" layoutY="245.0" promptText="Apellido Materno" />
-                              <Button layoutX="275.0" layoutY="296.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="90.0" text="Ver" />
+                              <TextField fx:id="tfNoPersonal" layoutX="150.0" layoutY="205.0" promptText="Numero de Personal" />
+                              <TextField fx:id="tfNombrePerfil" layoutX="334.0" layoutY="205.0" promptText="Nombre" />
+                              <TextField fx:id="tfApellidoPaterno" layoutX="150.0" layoutY="245.0" promptText="Apellido Paterno" />
+                              <TextField fx:id="tfApellidoMaterno" layoutX="334.0" layoutY="245.0" promptText="Apellido Materno" />
+                              <Button layoutX="275.0" layoutY="296.0" mnemonicParsing="false" onAction="#btnVerPerfil" prefHeight="26.0" prefWidth="90.0" text="Ver" />
                            </children>
                         </AnchorPane>
                     </content>
