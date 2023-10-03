@@ -305,14 +305,17 @@ public class FXMLPrincipalController implements Initializable {
 
     @FXML
     void menuVerAcercaDe(ActionEvent event) {
-        String info = "";
+        String acercaDe = "Alumno: Albhieri Cristoff Villa Contreras\n" +
+                "Experiencia Educativa: Principios de Construccion de Software\n" +
+                "Facultad de Estadistica e Informatica\n" +
+                "Universidad Veracruzana";
 
         Alert dialogoInfo = new Alert(Alert.AlertType.INFORMATION);
 
         dialogoInfo.setTitle("Acerca De");
 
-        dialogoInfo.setHeaderText("Acerca De");
-        dialogoInfo.setContentText(info);
+        dialogoInfo.setHeaderText("Sobre mi:");
+        dialogoInfo.setContentText(acercaDe);
         dialogoInfo.showAndWait();
     }
 
