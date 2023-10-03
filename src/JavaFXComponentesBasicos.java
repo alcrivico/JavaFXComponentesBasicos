@@ -16,7 +16,7 @@ public class JavaFXComponentesBasicos extends Application {
 
     @Override
     public void start(Stage principalStage) throws Exception {
-        Font poppins = Font.loadFont(getClass().getResourceAsStream("./resources/fonts/Poppins-Regular.ttf"), 12);
+        Font.loadFont(getClass().getResourceAsStream("./resources/fonts/Poppins-Regular.ttf"), 12);
         Image windowIcon = new Image("./resources/icons/scene-builder-icon.png");
 
         Parent root = null;
